@@ -1,0 +1,64 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+class LinkedList:
+    def __init__(self):
+        self.head = None
+    def insert(self, data):
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node  # links new node to head
+        else:
+            temp = self.head
+            while temp.next:
+                temp = temp.next
+            temp.next = new_node
+    def display(self):
+        temp = self.head
+        while temp:
+            print(temp.data, end=" -> ")
+            temp = temp.next
+        print("None")
+    def add_li(self):
+        temp=self.head
+        sum=0
+        while temp:
+            sum=sum+temp.data
+            temp=temp.next
+        return sum
+    def count(self):
+         temp = self.head
+         count = 0
+         while temp: 
+            count += 1
+            temp = temp.next
+         return count
+    def insert_begnning(self,data):
+        new_node=Node(data)
+        new_node.next=self.head
+        self.head=new_node
+    def insert_end(self, data):
+        self.insert(data)
+    def delete_beginning(self):
+        self.head=self.head.next
+    def delete_end(self):
+        temp=self.head
+        while temp.next.next:
+            temp=temp.next
+        temp.next=None
+        
+ll=LinkedList()
+ll.insert_begnning(8888888880)
+ll.insert_end(10)
+ll.insert(20)
+ll.insert(30)
+ll.insert(40)
+ll.insert(90)
+ll.delete_beginning()
+ll.delete_end()
+ll.display()
+ans=ll.add_li()
+print(ans)
+count=ll.count()
+print(count)

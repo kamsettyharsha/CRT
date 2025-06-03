@@ -1,0 +1,8 @@
+def fibonaci(n):
+    if(n==0):
+        return 
+    else:
+        return (n-1)+(n-2)
+        print(n)
+ans=fibonaci(10)        
+print(ans)

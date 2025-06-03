@@ -1,0 +1,26 @@
+class casio:
+    def __init__(self,a,b):
+        self.a=a
+        self.b=b
+    def add(a,b):
+        return a+b
+    def sub(a,b):
+        return a-b
+    def mul(a,b):
+        return a*b
+    def div(a,b):
+        return a/b
+obj_1=casio
+ch=int(input("Enter The Number "))
+a=int(input("Enter The Number of a  "))
+b=int(input("Enter The Number of b  "))
+if(ch==1):
+    print(obj_1.add(a,b))
+elif(ch==2):
+    print(obj_1.sub(a,b))
+elif(ch==3):
+    print(obj_1.mul(a,b))
+else:
+    print(obj_1.div(a,b))
+    
+      

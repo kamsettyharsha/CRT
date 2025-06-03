@@ -1,0 +1,21 @@
+MULTILEVEL:
+
+class grand_father:
+    def grand_father_method():
+        return "This The Grand Father Method"
+class father(grand_father):        
+    def father_method():
+        return "This The Father Method"        
+class child(father,grand_father):
+     def child_method():
+        return "This The Child Method"
+grand_father_method_object=grand_father
+father_object=father
+child_object=child
+print(grand_father_method_object.grand_father_method()) 
+print(father_object.father_method()) 
+print(father_object.grand_father_method()) 
+print(child_object.child_method())
+print(child_object.father_method()) 
+print(child_object.grand_father_method()) 
+        

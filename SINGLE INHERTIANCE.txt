@@ -1,0 +1,13 @@
+SINGLE INHERTIANCE
+class father:
+    def father_method():
+        return "This The Father Method"
+class child(father):
+     def child_method():
+        return "This The Child Method"
+parent_object=father
+child_object=child
+print(parent_object.father_method()) 
+print(child_object.father_method()) 
+print(child_object.child_method()) 
+        

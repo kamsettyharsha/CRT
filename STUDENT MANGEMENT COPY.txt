@@ -1,0 +1,59 @@
+from db import connection
+def admin():
+    conn = connection()
+    cursor=conn.cursor()
+    print("""\nadmin menu:
+    1.add student
+    2.update student
+    3.reset password
+    4.update marks
+    5.view all students
+    6.update timetablle
+    7. logout""")
+    ch = int(input("enter the choice:"))
+    if ch==1:
+        add_student()
+    elif ch==2:
+        update_student()
+    elif ch==3:
+        reset_password()
+    elif ch ==4:
+        update_marks()
+    elif ch == 5:
+        view_all_students
+    elif ch == 6:
+        update_timetable()
+    else:
+        logout()
+    
+def add_student():
+    conn = connection()
+    cursor=conn.cursor()
+    
+    roll_no=input("enter the roll no:")
+    name = input("enter name:")
+    class_name = input("enter class:")
+    section=input("enter section:")
+    password="password@123"
+    email = input("enter the gmail")
+
+   
+    query ="insert into students(roll_no,name,class,section,password,email)values(%s,%s,%s,%s,%s,%s)"
+    values = (roll_no,name,class_name,section,password,email)
+    cursor.execute(query,values)
+    conn.commit()
+    print("data inserted successfully") 
+
+def update_students():
+    pass
+def reset_password():
+    pass
+def update_marks():
+    pass
+def view_all_students():
+    pass
+def update_timetable():
+    pass
+def logout():
+    pass
+    return

@@ -1,0 +1,12 @@
+ABSTRACT METHOD
+from abc import ABC,abstractmethod
+class four_wheeler(ABC):
+    @abstractmethod
+    def engine():
+        pass 
+class swift(four_wheeler):
+    def car_start():
+        return "Car is moving"
+car=swift
+ans=car.car_start()
+print(ans)

@@ -1,0 +1,14 @@
+
+GETTER & SETTER
+class student:
+    def __init__(self,marks): 
+        self.marks=marks
+        self.__marks=marks   
+    def getter(self):
+        return self.marks
+    def setter(self,marks):
+        self.__marks=marks
+obj=student(0)
+obj.setter(10)
+ans=obj.getter()
+print(ans)
