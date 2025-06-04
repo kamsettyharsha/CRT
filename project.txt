@@ -1,0 +1,105 @@
+'''
+Daily Routine:
+  insert task
+  view task
+  delete task
+  exit
+'''
+from db import connection
+def credentials():
+    conn=connection()
+    cursor=conn.cursor()
+    print("""\n Credents:
+    1.Sign Up
+    2.Login""")
+    ip=int(input("Enter an opt"))
+    if ip==1:
+         username=input("Username:")
+         password=input("Password")
+         cursor.execute("select * from credential where username=%s",(username,))
+         result=cursor.fetchone()
+         if result:
+             print("username already exists")
+         else:
+            query="insert into credential(username,password) values(%s,%s)"
+            values=(username,password)
+            cursor.execute(query,values)
+            conn.commit()
+            print("signup successful")          
+    if  ip==2:
+        username=input("Username:")
+        password=input("Password")
+        cursor.execute("select username,password from credential where username=%s and password=%s",(username,password,))
+        result=cursor.fetchone()
+        if result:
+            print("Login successfully")
+            return task()
+        else:
+            print("username or password not found try signing up...")
+        
+
+
+def task():
+        conn=connection()
+        cursor=conn.cursor()
+        print("""\n Task Function
+        1.Add Task
+        2.View Task
+        3.Update Task
+        4.Delete Task
+        5.End routine""")
+        ch=int(input("Enter function"))
+        if ch==1:
+             add_task()
+        elif ch==2:
+            view_task()
+        elif ch==3:
+            update_task()
+        elif ch==4:
+            delete_task()
+        else:
+            print("Day ended")
+
+def add_task():
+        conn=connection()
+        task_id=int(input("Enter task ID:"))
+        task_name=(input("Enter task name:"))
+        status=input("Enter the status of task:")
+        cursor=conn.cursor()
+        query="insert into taski(task_id,task_name,status) values(%s,%s,%s)"
+        values=(task_id,task_name,status)
+        cursor.execute(query,values)
+        conn.commit()
+        print("task added successfully")
+
+def view_task():
+        conn=connection()
+        cursor=conn.cursor()
+        cursor.execute("select * from taski")
+        for row in cursor.fetchall():
+             print(row)
+        conn.close()
+
+
+def update_task():
+        conn=connection()
+        cursor=conn.cursor()
+        task_id=int(input("Enter task ID:"))
+        task_name=(input("Enter new task name:"))
+        status=input("Enter the new status of task:")
+        query="update taski set task_name=%s,status=%s  where task_id=%s"
+        values=(task_name,status,task_id)
+        cursor.execute(query,values)
+        conn.commit()
+        print("Task updated successfully")
+
+def delete_task():
+        conn=connection()
+        cursor=conn.cursor()
+        task_id=int(input("Enter task ID:"))
+        query="delete from taski where task_id=%s"
+        values=(task_id,)
+        cursor.execute(query,values)
+        conn.commit()
+        print("Task deleted successfully")
+credentials()
